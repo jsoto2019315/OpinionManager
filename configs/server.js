@@ -15,6 +15,7 @@ class Server{
 
         this.registerUserPath = '/opinionManager/v1/users';
         this.loginPath = '/opinionManager/v1';
+        this.editUserProfile = '/opinionManager/v1/users'
 
         this.middlewares();
         this.connectDB();

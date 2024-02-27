@@ -22,3 +22,56 @@ export const userPost = async (req, res) => {
     }
 
 }
+
+export const userPut = async (req, res) => {
+    // const { id } = req.user;
+    // const {__v, _id, status, google, ...rest} = req.body;
+
+    // const user = await User.findByIdAndUpdate(id, rest);
+
+    // res.status(200).json({
+    //     msg:'User updated successfully'
+    // })
+
+    const { id } = req.user;
+    const { oldPassword, newPassword, _id, status, __v, ...rest } = req.body;
+
+    try {
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(404).json({
+                msg: "User isn't logged in"
+            });
+        }
+
+        if (oldPassword && newPassword) {
+            const validOldPassword = bcryptjs.compareSync(oldPassword, user.password);
+            if (!validOldPassword) {
+                return res.status(400).json({
+                    msg: "Incorrect old password "
+                });
+            }
+
+            const hashedNewPassword = bcryptjs.hashSync(newPassword, 10);
+            user.password = hashedNewPassword;
+        }
+
+        for (const key in rest) {
+            user[key] = rest[key];
+        }
+
+        await user.save();
+
+        res.status(200).json({
+            msg: "User updated successfully"
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            msg: "Error processing request"
+        });
+    }
+
+
+}
