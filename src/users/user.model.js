@@ -8,7 +8,7 @@ const UserSchema = mongoose.Schema({
     email: {
         type: String,
         require: [true, "Required field"],
-        unique: true //Cuidado, si da erro en el endpoint puede ser por esto
+        //unique: true //Cuidado, si da erro en el endpoint puede ser por esto
     },
     password: {
         type: String,
