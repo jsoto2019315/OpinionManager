@@ -11,38 +11,88 @@ export const login = async (req, res) => {
 
         if (email) {
             user = await User.findOne({ email });
+
+            if (!user) {
+                return res.status(400).json({
+                    msg: "Email hasn't been register"
+                });
+            }
+    
+            if (!user.status) {
+                return res.status(400).json({
+                    msg: "Email doesn't exist in DB",
+                });
+            }
+    
+            const validPassword = bcryptjs.compareSync(password, user.password);
+            if (!validPassword) {
+                return res.status(400).json({
+                    msg: "Incorrect password"
+                });
+            }
+    
+            const token = await generateJWT(user.id)
+    
+            res.status(200).json({
+                msg: `You've logged in, welcome ${user.userName}. Your token is:  ${token}`
+            });
         } else if (userName) {
             user = await User.findOne({ userName });
+
+            if (!user) {
+                return res.status(400).json({
+                    msg: "User hasn't been register"
+                });
+            }
+    
+            if (!user.status) {
+                return res.status(400).json({
+                    msg: "User doesn't exist in DB",
+                });
+            }
+    
+            const validPassword = bcryptjs.compareSync(password, user.password);
+            if (!validPassword) {
+                return res.status(400).json({
+                    msg: "Incorrect password"
+                });
+            }
+    
+            const token = await generateJWT(user.id)
+    
+            res.status(200).json({
+                msg: `You've logged in, welcome ${user.userName}. Your token is:  ${token}`
+            });
         } else {
             return res.status(400).json({
                 msg: "You must give an email or user to log in"
             });
         }
 
-        if (!user) {
-            return res.status(400).json({
-                msg: "Email hasn't been register"
-            });
-        }
+        // if (!user) {
+        //     return res.status(400).json({
+        //         msg: "Email hasn't been register"
+        //     });
+        // }
 
-        if (!user.status) {
-            return res.status(400).json({
-                msg: "User doesn't exist in DB",
-            });
-        }
+        // if (!user.status) {
+        //     return res.status(400).json({
+        //         msg: "User doesn't exist in DB",
+        //     });
+        // }
 
-        const validPassword = bcryptjs.compareSync(password, user.password);
-        if (!validPassword) {
-            return res.status(400).json({
-                msg: "Incorrect password"
-            });
-        }
+        // const validPassword = bcryptjs.compareSync(password, user.password);
+        // if (!validPassword) {
+        //     return res.status(400).json({
+        //         msg: "Incorrect password"
+        //     });
+        // }
 
-        const token = await generateJWT(user.id)
+        // const token = await generateJWT(user.id)
 
-        res.status(200).json({
-            msg: `You've logged in, welcome ${user.userName}. Your token is:  ${token}`
-        });
+        // res.status(200).json({
+        //     msg: `You've logged in, welcome ${user.userName}. Your token is:  ${token}`
+        // });
 
     } catch (e) {
         console.log(e),
