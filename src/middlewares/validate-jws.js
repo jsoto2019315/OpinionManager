@@ -30,8 +30,8 @@ export const validateJWT = async (req, res, next) => {
         
         next();
     } catch (e) {
-        console.log('Mistake creating the token');
-        console.log(e);
+        console.log('Mistake creating the token \nPlease log in again to generate a new token');
+        //console.log(e);
         res.status(401).json({
             msg: 'Invalid token'
         })

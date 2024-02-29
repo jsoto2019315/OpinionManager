@@ -29,38 +29,11 @@ export const publicationPost = async (req, res) => {
 export const publicationPut = async (req, res) => {
 
     try {
-        // const { __v, _id, status, ...rest } = req.body;
-        // const userId = req.user._id;
-        // const publicationId = req.params.id;
-
-        // const publication = await Publication.findByIdAndUpdate(publicationId, rest);
-
-
-        // if (!publication) {
-        //     return res.status(404).json({ error: 'Publication not found' });
-        // }
-
-
-        // if (publication.userId !== userId) {
-        //     return res.status(403).json({ error: 'You do not have permissions to update this publication' });
-        // }
-
-        // await publication.save();
-
-        // res.status(200).json({
-        //     msg:"Publication updated successfully"
-        // });
-
-
-
-
-
-        // const { title, category, mainText } = req.body;
         const { __v, _id, status, ...rest } = req.body;
         const userId = req.user._id;
         const publicationId = req.params.id;
 
-        const publication = await Publication.findByIdAndUpdate(publicationId, rest);
+        const publication = await Publication.findById(publicationId);
 
         if (!publication) {
             return res.status(404).json({
@@ -83,10 +56,7 @@ export const publicationPut = async (req, res) => {
             });
         }
 
-        // Actualizar los campos de la publicación
-        // publication.title = title;
-        // publication.category = category;
-        // publication.mainText = mainText;
+        Object.assign(publication, rest);
 
         await publication.save();
 
@@ -100,4 +70,48 @@ export const publicationPut = async (req, res) => {
             msg: "Error processing request"
         });
     }
+}
+
+export const publicationDelete = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const publicationId = req.params.id;
+        const publication = await Publication.findById(publicationId);
+
+        if (!publication) {
+            return res.status(404).json({
+                msg: 'Publication not found'
+            });
+        }
+
+        if (!publication.status) {
+            return res.status(404).json({
+                msg: 'Publication not found'
+            });
+        }
+
+        const publicationUserId = publication.userId.toString();
+        const requestingUserId = userId.toString();
+
+        if (publicationUserId !== requestingUserId) {
+            return res.status(403).json({
+                msg: 'You do not have permissions to delete this publication'
+            });
+        }
+
+        publication.status = false;
+
+        await publication.save();
+
+        res.status(200).json({
+            msg: "Publication deleted successfully"
+        })
+    } catch (e) {
+        console.error(e),
+            res.status(500).json({
+                msg: "Error processing request"
+            });
+    }
+
+
 }

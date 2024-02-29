@@ -19,6 +19,7 @@ class Server{
         this.editUserProfile = '/opinionManager/v1/users';
         this.addNewPublicationPath = '/opinionManager/v1/publications';
         this.editPublicationPath = '/opinionManager/v1/publications';
+        this.deletePublicationPath = '/opinionManager/v1/publications'
 
         this.middlewares();
         this.connectDB();
@@ -42,6 +43,7 @@ class Server{
         this.app.use(this.loginPath, authRoutes);
         this.app.use(this.addNewPublicationPath, publicationRoutes);
         this.app.use(this.editPublicationPath, publicationRoutes);
+        this.app.use(this.deletePublicationPath, publicationRoutes);
     }
 
     listen(){

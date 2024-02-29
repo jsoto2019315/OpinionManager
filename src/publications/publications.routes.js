@@ -4,7 +4,7 @@ import { check } from "express-validator";
 import { validateFields } from "../middlewares/validate-fields.js";
 
 
-import { publicationPost, publicationPut } from "./publications.controller.js";
+import { publicationDelete, publicationPost, publicationPut } from "./publications.controller.js";
 import { validateJWT } from "../middlewares/validate-jws.js";
 
 const router = Router();
@@ -29,7 +29,15 @@ router.put(
         check("mainText", "You must give a text").not().isEmpty(),
         validateFields
     ], publicationPut
-)
+);
+
+router.delete(
+    "/deletePublication/:id",
+    [
+        validateJWT,
+        validateFields
+    ], publicationDelete
+);
 
 
 export default router;
