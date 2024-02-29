@@ -27,9 +27,7 @@ export const validateJWT = async (req, res, next) => {
         }
 
         req.user = user
-
-        console.log(user); //Comprobador
-
+        
         next();
     } catch (e) {
         console.log('Mistake creating the token');

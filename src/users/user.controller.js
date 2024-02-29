@@ -24,15 +24,6 @@ export const userPost = async (req, res) => {
 }
 
 export const userPut = async (req, res) => {
-    // const { id } = req.user;
-    // const {__v, _id, status, google, ...rest} = req.body;
-
-    // const user = await User.findByIdAndUpdate(id, rest);
-
-    // res.status(200).json({
-    //     msg:'User updated successfully'
-    // })
-
     const { id } = req.user;
     const { oldPassword, newPassword, _id, status, __v, ...rest } = req.body;
 
