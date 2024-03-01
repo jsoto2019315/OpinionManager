@@ -1,0 +1,33 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "UserProfile",
+    "dateExported": "2024-03-01T13:41:43.759Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "19205faf-f182-4295-ba8b-711cdf84dfeb",
+            "colId": "23622cf7-fbdb-497c-9865-0b176d94342e",
+            "containerId": "",
+            "name": "EditUserProfile",
+            "url": "http://localhost:3000/opinionManager/v1/users/editUserProfile",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2024-02-27T06:42:56.535Z",
+            "modified": "2024-03-01T07:18:34.653Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRkNmIxMzU0YjE1NjAwNmE0NzYzNGEiLCJpYXQiOjE3MDkyNzc0MTgsImV4cCI6MTcwOTI4NDYxOH0.gOVEf1bZsITLFAOjxLhV0mO_MnJLWjrEGR8rDM8dIiM"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userName\":\"jsoto\",\n  \"email\":\"jsoto@gmail.com\",\n  \"oldPassword\": \"123456\",\n  \"newPassword\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

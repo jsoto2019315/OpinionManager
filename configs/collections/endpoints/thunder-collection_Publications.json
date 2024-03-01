@@ -1,0 +1,90 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Publications",
+    "dateExported": "2024-03-01T13:41:49.894Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "78cf891f-d51c-4e8b-86ae-823ff1b4a17e",
+            "colId": "e0aac61f-1d7c-4bac-a73b-e20babe2fd23",
+            "containerId": "",
+            "name": "AddNewPublication",
+            "url": "http://localhost:3000/opinionManager/v1/publications/addNewPublication/",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-29T03:30:18.957Z",
+            "modified": "2024-03-01T07:22:34.971Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRkNmIxMzU0YjE1NjAwNmE0NzYzNGEiLCJpYXQiOjE3MDkyNzc0MTgsImV4cCI6MTcwOTI4NDYxOH0.gOVEf1bZsITLFAOjxLhV0mO_MnJLWjrEGR8rDM8dIiM"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Sixth Publication\",\n  \"category\": \"Test\",\n  \"mainText\": \"This is the publication test No. 6\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c67a5ee6-8dbd-489e-bda1-d701dd55a696",
+            "colId": "e0aac61f-1d7c-4bac-a73b-e20babe2fd23",
+            "containerId": "",
+            "name": "EditPublication",
+            "url": "http://localhost:3000/opinionManager/v1/publications/editPublication/65e181f81b2643a0b36965e8",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-02-29T05:11:24.221Z",
+            "modified": "2024-03-01T07:27:56.127Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRkNmIxMzU0YjE1NjAwNmE0NzYzNGEiLCJpYXQiOjE3MDkyNzgwNTQsImV4cCI6MTcwOTI4NTI1NH0.fKmpLUnXyfTk1Z9dw9CVDfMyg4kSUIMttpUP95VDPlk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Fifth Publication updated\",\n  \"category\": \"Test\",\n  \"mainText\": \"This is the publication test No. 5\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5125e55d-e052-4484-a00d-0530f38b9779",
+            "colId": "e0aac61f-1d7c-4bac-a73b-e20babe2fd23",
+            "containerId": "",
+            "name": "DeletePublication",
+            "url": "http://localhost:3000/opinionManager/v1/publications/deletePublication/65e181f81b2643a0b36965e8",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-02-29T08:53:57.093Z",
+            "modified": "2024-03-01T07:29:44.466Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRkNmIxMzU0YjE1NjAwNmE0NzYzNGEiLCJpYXQiOjE3MDkyNzgxNjEsImV4cCI6MTcwOTI4NTM2MX0.d0K2CiAaZm6ezsLJ99_HIaCq07JzMtW8hbD7SAG1G7w"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ba0b217a-e956-4b10-9e29-34e7d2e5980b",
+            "colId": "e0aac61f-1d7c-4bac-a73b-e20babe2fd23",
+            "containerId": "",
+            "name": "ShowPublications",
+            "url": "http://localhost:3000/opinionManager/v1/publications/showPublications",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-03-01T00:32:57.563Z",
+            "modified": "2024-03-01T00:35:49.023Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

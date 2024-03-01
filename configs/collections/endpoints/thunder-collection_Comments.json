@@ -1,0 +1,90 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Comments",
+    "dateExported": "2024-03-01T13:42:02.775Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "cc16f10a-8ea6-4380-8519-d282ca872bc5",
+            "colId": "c4f75ee3-e7b1-489a-b723-7b6b963a64ce",
+            "containerId": "",
+            "name": "AddNewComment",
+            "url": "http://localhost:3000/opinionManager/v1/comments/addComment",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-01T03:50:10.819Z",
+            "modified": "2024-03-01T07:39:24.513Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRkNmIxMzU0YjE1NjAwNmE0NzYzNGEiLCJpYXQiOjE3MDkyNzgzNzMsImV4cCI6MTcwOTI4NTU3M30.rGb5aqr94pRks1H5QL_u_NwItW43Gm-uwiBWiTjvlvs"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"publicationId\":\"65e11d25b61f784765e8e4f7\",\n  \"commentTitle\": \"Test Comment\",\n  \"commentContent\": \"Fourth test comment\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ca5dbd54-a181-4683-9637-c017cf9a5da5",
+            "colId": "c4f75ee3-e7b1-489a-b723-7b6b963a64ce",
+            "containerId": "",
+            "name": "EditComment",
+            "url": "http://localhost:3000/opinionManager/v1/comments/updateComment/65e185fb1b2643a0b369661b",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-03-01T06:19:07.965Z",
+            "modified": "2024-03-01T07:44:36.054Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRkNmIxMzU0YjE1NjAwNmE0NzYzNGEiLCJpYXQiOjE3MDkyNzkwNjYsImV4cCI6MTcwOTI4NjI2Nn0.b0UYaZeoFJUyc-UovL9TASO_Ilr_R97ND2-pErTUUpE"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"commentTitle\":\"Comment edited\",\n  \"commentContent\":\"This comment was edited\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b538e221-40a2-4585-aa2b-0d61cb5687c1",
+            "colId": "c4f75ee3-e7b1-489a-b723-7b6b963a64ce",
+            "containerId": "",
+            "name": "DeleteComment",
+            "url": "http://localhost:3000/opinionManager/v1/comments/deleteComment/65e1862c1b2643a0b369661f",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-03-01T06:41:33.865Z",
+            "modified": "2024-03-01T07:46:49.335Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRkNmIxMzU0YjE1NjAwNmE0NzYzNGEiLCJpYXQiOjE3MDkyNzkxOTksImV4cCI6MTcwOTI4NjM5OX0.55L1H-UamCaS7W7J2iWrsEx3enjy163zcwys8WM3LRs"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8c2b97a1-a340-4d3d-bf33-f66f2b393112",
+            "colId": "c4f75ee3-e7b1-489a-b723-7b6b963a64ce",
+            "containerId": "",
+            "name": "ShowComments",
+            "url": "http://localhost:3000/opinionManager/v1/comments/showComments",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-03-01T06:53:39.018Z",
+            "modified": "2024-03-01T06:53:56.671Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

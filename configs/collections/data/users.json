@@ -1,0 +1,5 @@
+{ "_id" : { "$oid" : "65dd6b1354b156006a47634a" }, "userName" : "jsoto", "email" : "jsoto@gmail.com", "password" : "$2a$10$Pz/dpBO8o1DrVP66iVDCautCwhmspBmr1U2CvY/0bvhuO8pkQeRiq", "status" : true, "google" : true, "__v" : 0 }
+{ "_id" : { "$oid" : "65dd6b3654b156006a47634e" }, "userName" : "zmenendez", "email" : "zmenendez@gmail.com", "password" : "$2a$10$zqv0MMnJG4vYDR.tlGrks.vK3bvYdIXv5UvFhxewfpmcfppYS7DUq", "status" : true, "google" : true, "__v" : 0 }
+{ "_id" : { "$oid" : "65dd6b3d54b156006a476352" }, "userName" : "omorales", "email" : "omorales@gmail.com", "password" : "$2a$10$nrV.gJQWBtf8QUmtjUhqAu5LWj9uei8RJQH8rz7MLTUvub9FIQNS.", "status" : true, "google" : true, "__v" : 0 }
+{ "_id" : { "$oid" : "65dd6b4d54b156006a476356" }, "userName" : "dsandoval", "email" : "dsandoval@gmail.com", "password" : "$2a$10$NfuFPnIhap7y/QQOq8ga.OmgEeWXGyZ134eeXAKm7XROJW2.t6sEi", "status" : true, "google" : true, "__v" : 0 }
+{ "_id" : { "$oid" : "65e17d1e41f9fa1e9557003f" }, "userName" : "Algo", "email" : "algo@gmail.com", "password" : "$2a$10$gOBOo6sdw7JsoiEDt8lTFu34BdMyF3dW4UWZ2S9umGVotN.89JGdK", "status" : true, "google" : true, "__v" : 0 }
