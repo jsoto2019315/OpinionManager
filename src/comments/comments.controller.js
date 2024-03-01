@@ -80,4 +80,43 @@ export const commentPut = async (req, res) => {
     }
 }
 
+export const commentDelete = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const commentId = req.params.id;
+        const comment = await Comment.findById(commentId);
 
+        if (!comment) {
+            return res.status(404).json({
+                msg: 'Comment not found'
+            });
+        }
+
+        if (!comment.status) {
+            return res.status(404).json({
+                msg: 'Comment not found'
+            });
+        }
+
+        const commentUserId = comment.userId.toString();
+        const loggedUserId = userId.toString();
+
+        if (commentUserId !== loggedUserId) {
+            return res.status(403).json({
+                msg: 'You do not have permissions to update this comment'
+            });
+        }
+
+        comment.status = false;
+
+        res.status(200).json({
+            msg: "Comment deleted successfully"
+        })
+        await comment.save();
+    } catch (e) {
+        console.error(e),
+            res.status(500).json({
+                msg: "Error processing request"
+            });
+    }
+}

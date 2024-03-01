@@ -115,7 +115,7 @@ export const publicationDelete = async (req, res) => {
 
 export const publicationGet = async (req, res = response) => {
     const { limit, from } = req.query;
-    const query = { status: true};
+    const query = { status: true };
 
     const [total, publications] = await Promise.all([
         Publication.countDocuments(query),

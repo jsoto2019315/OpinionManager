@@ -5,7 +5,7 @@ import { validateFields } from "../middlewares/validate-fields.js";
 
 
 import { validateJWT } from "../middlewares/validate-jws.js";
-import { commentPost, commentPut } from "./comments.controller.js";
+import { commentDelete, commentPost, commentPut } from "./comments.controller.js";
 
 const router = Router();
 
@@ -28,6 +28,14 @@ router.put(
         check("commentContent", "Content is required").not().isEmpty(),
         validateFields
     ], commentPut
+);
+
+router.delete(
+    "/deleteComment/:id",
+    [
+        validateJWT,
+        validateFields
+    ], commentDelete
 );
 
 export default router;

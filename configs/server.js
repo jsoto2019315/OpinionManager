@@ -23,6 +23,7 @@ class Server{
         this.showPublicationsPath = '/opinionManager/v1/publications';
         this.addNewCommentPath = '/opinionManager/v1/comments';
         this.updateCommentPath = '/opinionManager/v1/comments';
+        this.deleteCommentPath = '/opinionManager/v1/comments';
 
         this.middlewares();
         this.connectDB();
@@ -50,6 +51,7 @@ class Server{
         this.app.use(this.showPublicationsPath, publicationRoutes);
         this.app.use(this.addNewCommentPath, commentsRoutes);
         this.app.use(this.updateCommentPath, commentsRoutes);
+        this.app.use(this.deleteCommentPath, commentsRoutes);
     }
 
     listen(){
