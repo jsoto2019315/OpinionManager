@@ -5,7 +5,7 @@ import { validateFields } from "../middlewares/validate-fields.js";
 
 
 import { validateJWT } from "../middlewares/validate-jws.js";
-import { commentDelete, commentPost, commentPut } from "./comments.controller.js";
+import { commentDelete, commentGet, commentPost, commentPut } from "./comments.controller.js";
 
 const router = Router();
 
@@ -37,5 +37,8 @@ router.delete(
         validateFields
     ], commentDelete
 );
+
+router.get("/showComments", commentGet);
+
 
 export default router;

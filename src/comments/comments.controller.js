@@ -120,3 +120,20 @@ export const commentDelete = async (req, res) => {
             });
     }
 }
+
+export const commentGet = async (req, res = response) => {
+    const { limit, from } = req.query;
+    const query = { status: true };
+
+    const [total, comments ] = await Promise.all([
+        Comment.countDocuments(query),
+        Comment.find(query)
+            .skip(Number(from))
+            .limit(Number(limit))
+    ]);
+
+    res.status(200).json({
+        total,
+        comments
+    })
+}
