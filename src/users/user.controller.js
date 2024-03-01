@@ -1,6 +1,7 @@
 import { response, request } from "express";
 import bcryptjs from 'bcryptjs';
 import User from './user.model.js';
+import { getToken } from '../auth/auth.controller.js';
 
 export const userPost = async (req, res) => {
 
@@ -24,6 +25,8 @@ export const userPost = async (req, res) => {
 }
 
 export const userPut = async (req, res) => {
+    //res.header('x-token', getToken());
+
     const { id } = req.user;
     const { oldPassword, newPassword, _id, status, __v, ...rest } = req.body;
 

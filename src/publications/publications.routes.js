@@ -4,7 +4,7 @@ import { check } from "express-validator";
 import { validateFields } from "../middlewares/validate-fields.js";
 
 
-import { publicationDelete, publicationPost, publicationPut } from "./publications.controller.js";
+import { publicationDelete, publicationGet, publicationPost, publicationPut } from "./publications.controller.js";
 import { validateJWT } from "../middlewares/validate-jws.js";
 
 const router = Router();
@@ -38,6 +38,9 @@ router.delete(
         validateFields
     ], publicationDelete
 );
+
+router.get("/showPublications", publicationGet);
+
 
 
 export default router;

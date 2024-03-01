@@ -1,6 +1,5 @@
 import { response, request } from "express";
 import Publication from "./publications.model.js";
-import User from "../users/user.model.js";
 
 export const publicationPost = async (req, res) => {
     try {
@@ -114,4 +113,21 @@ export const publicationDelete = async (req, res) => {
     }
 
 
+}
+
+export const publicationGet = async (req, res = response) => {
+    const { limit, from } = req.query;
+    const query = { status: true};
+
+    const [total, publications] = await Promise.all([
+        Publication.countDocuments(query),
+        Publication.find(query)
+            .skip(Number(from))
+            .limit(Number(limit))
+    ]);
+
+    res.status(200).json({
+        total,
+        publications
+    })
 }
