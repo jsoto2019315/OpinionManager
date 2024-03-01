@@ -48,7 +48,7 @@ class Server{
     routes(){
         this.app.use(this.registerUserPath, userRoutes);
         this.app.use(this.loginPath, authRoutes);
-        this.app.use(this.editUserProfile, userRoutes)
+        this.app.use(this.editUserProfile, userRoutes);
         this.app.use(this.addNewPublicationPath, publicationRoutes);
         this.app.use(this.editPublicationPath, publicationRoutes);
         this.app.use(this.deletePublicationPath, publicationRoutes);
