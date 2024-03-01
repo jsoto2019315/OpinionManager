@@ -8,7 +8,7 @@ import { dbConnection } from './mongo.js';
 import userRoutes from '../src/users/user.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
 import publicationRoutes from '../src/publications/publications.routes.js';
-
+import commentsRoutes from '../src/comments/comments.routes.js';
 class Server{
     constructor(){
         this.app = express();
@@ -21,6 +21,7 @@ class Server{
         this.editPublicationPath = '/opinionManager/v1/publications';
         this.deletePublicationPath = '/opinionManager/v1/publications';
         this.showPublicationsPath = '/opinionManager/v1/publications';
+        this.addNewCommentPath = '/opinionManager/v1/comments';
 
         this.middlewares();
         this.connectDB();
@@ -46,6 +47,7 @@ class Server{
         this.app.use(this.editPublicationPath, publicationRoutes);
         this.app.use(this.deletePublicationPath, publicationRoutes);
         this.app.use(this.showPublicationsPath, publicationRoutes);
+        this.app.use(this.addNewCommentPath, commentsRoutes);
     }
 
     listen(){
