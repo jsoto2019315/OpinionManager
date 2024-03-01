@@ -4,8 +4,8 @@ import Publication from "../publications/publications.model.js";
 
 export const commentPost = async (req, res) => {
     try {
-        const { commentTitle, commentContent, publicationId} = req.body;
-
+        const { commentTitle, commentContent, publicationId } = req.body;
+        const userId = req.user._id;
         const publication = await Publication.findById(publicationId);
 
         if (!publication) {
@@ -14,15 +14,14 @@ export const commentPost = async (req, res) => {
             });
         }
 
-        if(!publication.status){
+        if (!publication.status) {
             return res.status(404).json({
                 msg: 'Publication not found'
             });
         }
 
 
-
-        const comment = new Comment({commentTitle, commentContent, publicationId});
+        const comment = new Comment({ commentTitle, commentContent, publicationId, userId });
         await comment.save();
 
         res.status(200).json({
@@ -33,6 +32,51 @@ export const commentPost = async (req, res) => {
     } catch (e) {
         console.log("Probably you don't enter a required field");
         console.log(e);
+    }
+}
+
+export const commentPut = async (req, res) => {
+    try {
+        const { __v, _id, status, publicationId, userId, ...rest } = req.body;
+        const userIdLogged = req.user._id;
+        const commentId = req.params.id;
+
+        const comment = await Comment.findById(commentId);
+
+        if (!comment) {
+            return res.status(404).json({
+                msg: 'Comment not found'
+            });
+        }
+
+        if (!comment.status) {
+            return res.status(404).json({
+                msg: 'Comment not found'
+            });
+        }
+
+        const commentUserId = comment.userId.toString();
+        const loggedUserId = userIdLogged.toString();
+
+        if (commentUserId !== loggedUserId) {
+            return res.status(403).json({
+                msg: 'You do not have permissions to update this comment'
+            });
+        }
+
+        Object.assign(comment, rest);
+
+        await comment.save();
+
+        res.status(200).json({
+            msg: 'Comment update successfully'
+        });
+
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({
+            msg: "Error processing request"
+        });
     }
 }
 

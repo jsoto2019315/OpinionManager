@@ -111,8 +111,6 @@ export const publicationDelete = async (req, res) => {
                 msg: "Error processing request"
             });
     }
-
-
 }
 
 export const publicationGet = async (req, res = response) => {

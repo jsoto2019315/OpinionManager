@@ -5,6 +5,10 @@ const CommentSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Publication'
     },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     commentTitle:{
         type: String,
         require: [true, "Required field"]
