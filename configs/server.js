@@ -14,17 +14,19 @@ class Server{
         this.app = express();
         this.port = process.env.PORT
 
-        this.registerUserPath = '/opinionManager/v1/users';
-        this.loginPath = '/opinionManager/v1';
-        this.editUserProfile = '/opinionManager/v1/users';
-        this.addNewPublicationPath = '/opinionManager/v1/publications';
-        this.editPublicationPath = '/opinionManager/v1/publications';
-        this.deletePublicationPath = '/opinionManager/v1/publications';
-        this.showPublicationsPath = '/opinionManager/v1/publications';
-        this.addNewCommentPath = '/opinionManager/v1/comments';
-        this.updateCommentPath = '/opinionManager/v1/comments';
-        this.deleteCommentPath = '/opinionManager/v1/comments';
-        this.showCommentsPath = '/opinionManager/v1/comments';
+        this.registerUserPath = '/opinionManager/v1/users/userRegister';
+        this.loginPath = '/opinionManager/v1/login';
+        this.editUserProfile = '/opinionManager/v1/users/editUserProfile';
+        
+        this.addNewPublicationPath = '/opinionManager/v1/publications/addNewPublication';
+        this.editPublicationPath = '/opinionManager/v1/publications/editPublication';
+        this.deletePublicationPath = '/opinionManager/v1/publications/deletePublication';
+        this.showPublicationsPath = '/opinionManager/v1/publications/showPublications';
+        
+        this.addNewCommentPath = '/opinionManager/v1/comments/addComment';
+        this.updateCommentPath = '/opinionManager/v1/comments/updateComment';
+        this.deleteCommentPath = '/opinionManager/v1/comments/deleteComment';
+        this.showCommentsPath = '/opinionManager/v1/comments/showComments';
 
         this.middlewares();
         this.connectDB();
@@ -46,6 +48,7 @@ class Server{
     routes(){
         this.app.use(this.registerUserPath, userRoutes);
         this.app.use(this.loginPath, authRoutes);
+        this.app.use(this.editUserProfile, userRoutes)
         this.app.use(this.addNewPublicationPath, publicationRoutes);
         this.app.use(this.editPublicationPath, publicationRoutes);
         this.app.use(this.deletePublicationPath, publicationRoutes);

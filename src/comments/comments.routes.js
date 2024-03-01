@@ -10,7 +10,7 @@ import { commentDelete, commentGet, commentPost, commentPut } from "./comments.c
 const router = Router();
 
 router.post(
-    "/addComment",
+    "/",
     [
         validateJWT,
         check("publicationId", "ID isn't a valid MongoDB format").isMongoId(),
@@ -21,7 +21,7 @@ router.post(
 );
 
 router.put(
-    "/updateComment/:id",
+    "/:id",
     [
         validateJWT,
         check("commentTitle", "Title is required").not().isEmpty(),
@@ -31,14 +31,14 @@ router.put(
 );
 
 router.delete(
-    "/deleteComment/:id",
+    "/:id",
     [
         validateJWT,
         validateFields
     ], commentDelete
 );
 
-router.get("/showComments", commentGet);
+router.get("/", commentGet);
 
 
 export default router;

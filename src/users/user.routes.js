@@ -10,7 +10,7 @@ import { validateJWT } from "../middlewares/validate-jws.js";
 const router = Router();
 
 router.post(
-    "/userRegister",
+    "/",
     [
         check("userName", "Name is required").not().isEmpty(),
         check("userName").custom(existentUserName),
@@ -22,7 +22,7 @@ router.post(
 );
 
 router.put(
-    "/editUserProfile",
+    "/",
     [
         validateJWT,
         // check("password", "Password must have 6 characters").isLength({ min: 6 }),

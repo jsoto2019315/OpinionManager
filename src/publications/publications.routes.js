@@ -10,7 +10,7 @@ import { validateJWT } from "../middlewares/validate-jws.js";
 const router = Router();
 
 router.post(
-    "/addNewPublication",
+    "/",
     [
         validateJWT,
         check("title", "Title is required").not().isEmpty(),
@@ -21,7 +21,7 @@ router.post(
 );
 
 router.put(
-    "/editPublication/:id",
+    "/:id",
     [
         validateJWT,
         check("title", "Title is required").not().isEmpty(),
@@ -32,14 +32,14 @@ router.put(
 );
 
 router.delete(
-    "/deletePublication/:id",
+    "/:id",
     [
         validateJWT,
         validateFields
     ], publicationDelete
 );
 
-router.get("/showPublications", publicationGet);
+router.get("/", publicationGet);
 
 
 
